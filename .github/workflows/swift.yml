@@ -9,10 +9,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-linux:
+    runs-on: ubuntu-latest
 
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ConorMacBride/install-package@v1
+      with:
+        apt: binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata uuid-dev zlib1g-dev
+    - name: Download Swift
+      uses: valitydev/action-download-file@v1
+      with:
+        url: https://download.swift.org/swift-5.8.1-release/ubuntu2204/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
+        target-path: .
+    - run: tar -xzvf swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
+    - name: Build
+      run: ./swift-5.8.1-RELEASE-ubuntu22.04/usr/bin/swift build -v -c release
+    - uses: actions/upload-artifact@v3
+      with:
+        name: bel
+        path: bel
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: bel
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  build-mac:
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build
