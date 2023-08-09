@@ -23,9 +23,9 @@ jobs:
         url: https://download.swift.org/swift-5.8.1-release/ubuntu2204/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
         target-path: .
     - run: tar -xzvf swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
-    - run: tree -a
     - name: Build
       run: ./swift-5.8.1-RELEASE-ubuntu22.04/usr/bin/swift build -v -c release
+    - run: tree -a
     - uses: actions/upload-artifact@v3
       with:
         name: bel
