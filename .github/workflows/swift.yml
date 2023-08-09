@@ -28,11 +28,11 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: bel
-        path: bel
+        path: /home/runner/work/bel/bel/.build/x86_64-unknown-linux-gnu/release/bel
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
-        args: bel
+        args: /home/runner/work/bel/bel/.build/x86_64-unknown-linux-gnu/release/bel
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build-mac:
@@ -45,9 +45,3 @@ jobs:
       with:
         name: bel
         path: /Users/runner/work/bel/bel/.build/x86_64-apple-macosx/release/bel
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
-      with:
-        args: /Users/runner/work/bel/bel/.build/x86_64-apple-macosx/release/bel
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
