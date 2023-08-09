@@ -25,6 +25,7 @@ jobs:
     - run: tar -xzvf swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
     - name: Build
       run: ./swift-5.8.1-RELEASE-ubuntu22.04/usr/bin/swift build -v -c release
+    - run: ls -al
     - uses: actions/upload-artifact@v3
       with:
         name: bel
