@@ -45,24 +45,3 @@ jobs:
       with:
         name: bel
         path: /Users/runner/work/bel/bel/.build/x86_64-apple-macosx/release/bel
-  build-win:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    - name: Instal VS
-      run: curl -sOL https://aka.ms/vs/16/release/vs_community.exe
-    - name: install swift windows deps
-      run: .\vs_community.exe --passive --wait --norestart --wait --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
-    - run: pip install six
-    - run: curl -sOL https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-windows10.exe
-    - run: .\swift-5.8.1-RELEASE-windows10.exe
-    - name: Build
-      run: swift build -v -c release
-    - run: tree
-    #- uses: actions/upload-artifact@v3
-    #  with:
-    #    name: bel
-    #    path: /Users/runner/work/bel/bel/.build/x86_64-apple-macosx/release/bel
