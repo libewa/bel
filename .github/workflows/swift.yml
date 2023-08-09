@@ -17,4 +17,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: swift build -v
+      run: swift build -v -c release
+    - uses: actions/upload-artifact@v3
+      with:
+        name: bel
+        path: bel
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: bel
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
