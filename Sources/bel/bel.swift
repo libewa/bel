@@ -1,6 +1,6 @@
 public struct bel {
-    public private(set) var text = "Hello, World!"
-
+    public var bel = String(Character(UnicodeScalar(8)))
     public init() {
+        print(bel)
     }
 }
