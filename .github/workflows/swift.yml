@@ -57,7 +57,7 @@ jobs:
     - name: install swift windows deps
       run: start /w vs_community.exe --passive --wait --norestart --nocache --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" --add Microsoft.VisualStudio.Component.Windows10SDK.19041 --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
     - run: pip install six
-    - uses: validitydev/action-download-file@v1
+    - uses: valitydev/action-download-file@v1
       with:
         url: https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-windows10.exe
         target-path: .
