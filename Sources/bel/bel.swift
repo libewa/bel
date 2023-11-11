@@ -1,6 +1,7 @@
 public struct bel {
-    public private(set) var text = "Hello, World!"
+    public private(set) var text = "\a"
 
     public init() {
+        print(text)
     }
 }
